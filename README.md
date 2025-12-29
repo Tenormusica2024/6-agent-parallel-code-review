@@ -1,4 +1,4 @@
-# 6-Agent Parallel Code Review
+# 7-Agent Parallel Code Review
 
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Plugin-blue)](https://claude.ai/code)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -6,37 +6,39 @@
 
 [Japanese / 日本語版](./README_JP.md)
 
-**Run 6 specialized code reviews in parallel with a single command.**
+**Run 7 specialized code reviews in parallel with a single command.**
 
-> Transform your code review workflow: Get comprehensive feedback from 6 different perspectives simultaneously, reducing review time while increasing coverage.
+> Transform your code review workflow: Get comprehensive feedback from 7 different perspectives simultaneously, reducing review time while increasing coverage.
 
-## Why 6-Agent Parallel Review?
+## Why 7-Agent Parallel Review?
 
-| Traditional Review | 6-Agent Parallel |
+| Traditional Review | 7-Agent Parallel |
 |-------------------|------------------|
-| Single perspective | 6 specialized perspectives |
+| Single perspective | 7 specialized perspectives |
 | Sequential feedback | Parallel execution |
 | Manual multi-pass | One command, all insights |
 | ~30 min per review | ~5 min total |
 
 ## Features
 
-- **Parallel Execution**: All 6 agents run simultaneously
+- **Parallel Execution**: All 7 agents run simultaneously
+- **Security First**: Dedicated security vulnerability detection
 - **Specialized Perspectives**: Each agent focuses on one domain
 - **Quantified Output**: Numerical scores for objective tracking
 - **Prioritized Issues**: Critical > Important > Suggestions
 - **Git Integration**: Auto-detects changed files
 
-## 6 Review Perspectives
+## 7 Review Perspectives
 
 | Agent | Focus Area | Output |
 |-------|------------|--------|
+| **security-analyzer** | SQLi, XSS, CSRF, auth leaks | CRITICAL/HIGH/MEDIUM |
 | **code-reviewer** | CLAUDE.md compliance, bugs | 0-100 score |
-| **comment-analyzer** | Comment accuracy, docs | Quality report |
+| **silent-failure-hunter** | Error handling gaps | CRITICAL/HIGH/MEDIUM |
 | **pr-test-analyzer** | Test coverage gaps | 1-10 score |
-| **silent-failure-hunter** | Error handling | CRITICAL/HIGH/MEDIUM |
 | **type-design-analyzer** | Type safety, invariants | 4-dimension score |
 | **code-simplifier** | Complexity, refactoring | Concrete suggestions |
+| **comment-analyzer** | Comment accuracy, docs | Quality report |
 
 ## Quick Start
 
@@ -68,9 +70,10 @@ cp -r 6-agent-parallel-code-review/commands/* ~/.claude/commands/
 ```markdown
 # PR Review Summary
 
-## Critical Issues (2 found)
+## Critical Issues (3 found)
+- [security-analyzer]: SQL injection via string concatenation [src/db.js:23]
+- [security-analyzer]: Hardcoded API key exposed [src/config.js:5]
 - [silent-failure-hunter]: Empty catch block hides errors [src/api.js:45]
-- [code-reviewer]: SQL injection vulnerability [src/db.js:23]
 
 ## Important Issues (5 found)
 - [type-design-analyzer]: Nullable type not handled [src/user.ts:78]
@@ -79,6 +82,7 @@ cp -r 6-agent-parallel-code-review/commands/* ~/.claude/commands/
 
 ## Suggestions (8 found)
 - [code-simplifier]: Extract repeated logic to helper [src/utils.js:12-45]
+- [comment-analyzer]: Outdated comment doesn't match code [src/auth.js:30]
 ...
 
 ## Strengths
@@ -88,6 +92,7 @@ cp -r 6-agent-parallel-code-review/commands/* ~/.claude/commands/
 ## Score Summary
 | Aspect | Score |
 |--------|-------|
+| Security | 2 CRITICAL, 1 HIGH |
 | Code Quality | 72/100 |
 | Test Coverage | 6/10 |
 | Type Safety | 7/10 |
@@ -98,12 +103,13 @@ cp -r 6-agent-parallel-code-review/commands/* ~/.claude/commands/
 ```
 /pr-review
     │
-    ├── [Parallel] code-reviewer ──────────┐
-    ├── [Parallel] comment-analyzer ───────┤
-    ├── [Parallel] pr-test-analyzer ───────┼──> Aggregated Summary
-    ├── [Parallel] silent-failure-hunter ──┤
-    ├── [Parallel] type-design-analyzer ───┤
-    └── [Parallel] code-simplifier ────────┘
+    ├── [Parallel] security-analyzer ─────────┐
+    ├── [Parallel] code-reviewer ─────────────┤
+    ├── [Parallel] silent-failure-hunter ─────┤
+    ├── [Parallel] pr-test-analyzer ──────────┼──> Aggregated Summary
+    ├── [Parallel] type-design-analyzer ──────┤
+    ├── [Parallel] code-simplifier ───────────┤
+    └── [Parallel] comment-analyzer ──────────┘
 ```
 
 ## Requirements
