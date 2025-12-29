@@ -46,10 +46,10 @@
 
 ```bash
 # リポジトリをクローン
-git clone https://github.com/Tenormusica2024/6-agent-parallel-code-review.git
+git clone https://github.com/Tenormusica2024/7-agent-parallel-code-review.git
 
 # コマンドをClaude Code設定にコピー
-cp -r 6-agent-parallel-code-review/commands/* ~/.claude/commands/
+cp -r 7-agent-parallel-code-review/commands/* ~/.claude/commands/
 ```
 
 ### 使い方
