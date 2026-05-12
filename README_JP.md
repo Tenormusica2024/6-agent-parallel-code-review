@@ -6,6 +6,8 @@
 
 [English](./README.md)
 
+![7-Agent Parallel Code Review: 並列AIコードレビューのコマンドセンター](docs/assets/7-agent-parallel-code-review-hero-ja.png)
+
 **1つのコマンドで7/12/17の専門レビューを同時実行**
 
 > コードレビューのワークフローを変革: 複数の観点から同時にフィードバックを取得し、レビュー時間を短縮しながらカバレッジを向上。

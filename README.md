@@ -6,6 +6,8 @@
 
 [Japanese / 日本語版](./README_JP.md)
 
+![7-Agent Parallel Code Review: parallel AI review command center](docs/assets/7-agent-parallel-code-review-hero-en.png)
+
 **Run 7/12/17 specialized code reviews in parallel with a single command.**
 
 > Transform your code review workflow: Get comprehensive feedback from multiple perspectives simultaneously, reducing review time while increasing coverage.
